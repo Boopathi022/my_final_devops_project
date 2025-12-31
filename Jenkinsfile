@@ -24,17 +24,18 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sh """
-                ssh -i /home/ubuntu/mumbai-key.pem \
-                    -o StrictHostKeyChecking=no \
-                    ubuntu@52.66.4.150 << EOF
-                    docker stop finalapp || true
-                    docker rm finalapp || true
-                    docker run -d -p 8080:80 --name finalapp finalapp:${IMAGE_TAG}
+                scp -i /home/ubuntu/mumbai-key.pem -r . ubuntu@52.66.4.150:/home/ubuntu/app
+                ssh -i /home/ubuntu/mumbai-key.pem -o StrictHostKeyChecking=no ubuntu@52.66.4.150 << EOF
+                cd /home/ubuntu/app
+                docker build -t finalapp:$IMAGE_TAG .
+                docker stop finalapp || true
+                docker rm finalapp || true
+                docker run -d -p 8080:80 --name finalapp finalapp:$IMAGE_TAG
                 EOF
                 """
-    }
-}
+           }
+       }
 
-    }
+
 }
 
