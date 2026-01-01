@@ -9,22 +9,36 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Deploy to EC2') {
+        stage('Copy Code to EC2') {
             steps {
                 sh '''
                 rsync -av --exclude='.git' \
-                -e "ssh -i /home/ubuntu/mumbai-key.pem -o StrictHostKeyChecking=no" \
-                ./ ubuntu@52.66.4.150:/home/ubuntu/app
+                -e "ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no" \
+                ./ ubuntu@${EC2_IP}:/home/ubuntu/app
                 '''
             }
         }
 
+        stage('Build & Run on EC2') {
+            steps {
+                sh '''
+                ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ubuntu@${EC2_IP} << EOF
+                cd /home/ubuntu/app
+                docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
+                docker stop myapp || true
+                docker rm myapp || true
+                docker run -d -p 8081:80 --name myapp ${IMAGE_NAME}:${IMAGE_VERSION}
+                EOF
+                '''
+            }
+        }
     }
 }
 
