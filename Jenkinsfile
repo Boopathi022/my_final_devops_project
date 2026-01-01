@@ -29,13 +29,13 @@ pipeline {
         stage('Build & Run on EC2') {
             steps {
                 sh '''
-                ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ubuntu@${EC2_IP} << EOF
-                cd /home/ubuntu/app
-                docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
-                docker stop myapp || true
-                docker rm myapp || true
-                docker run -d -p 8081:80 --name myapp ${IMAGE_NAME}:${IMAGE_VERSION}
-                EOF
+ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ubuntu@${EC2_IP} << EOF
+cd /home/ubuntu/app
+docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
+docker stop myapp || true
+docker rm myapp || true
+docker run -d -p 8081:80 --name myapp ${IMAGE_NAME}:${IMAGE_VERSION}
+EOF
                 '''
             }
         }
