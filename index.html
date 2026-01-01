@@ -1,1 +1,119 @@
-<h1> DevOps Final Project Deployed Successfully!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Post</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .post {
+        width: 600px;
+        height: 600px;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .title {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .title span {
+        color: #00e5ff;
+    }
+
+    .role {
+        margin-top: 10px;
+        font-size: 18px;
+        opacity: 0.9;
+    }
+
+    .about {
+        margin-top: 30px;
+        font-size: 16px;
+        line-height: 1.6;
+        opacity: 0.95;
+    }
+
+    .skills {
+        margin-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill {
+        background: rgba(0,0,0,0.35);
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .footer {
+        border-top: 1px solid rgba(255,255,255,0.2);
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        opacity: 0.85;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="post">
+
+    <div>
+        <div class="title">Hi, I'm <span>Boopathi</span></div>
+        <div class="role">Cloud & DevOps Engineer 🚀</div>
+
+        <div class="about">
+            Passionate about automating infrastructure, building CI/CD pipelines,
+            and deploying scalable cloud solutions. I believe DevOps is not just
+            tools — it’s a mindset.
+        </div>
+
+        <div class="skills">
+            <div class="skill">Linux</div>
+            <div class="skill">Docker</div>
+            <div class="skill">Kubernetes</div>
+            <div class="skill">Jenkins</div>
+            <div class="skill">GitHub Actions</div>
+            <div class="skill">Terraform</div>
+            <div class="skill">Ansible</div>
+            <div class="skill">AWS</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Learning • Building • Improving</div>
+        <div>#DevOps #Cloud</div>
+    </div>
+
+</div>
+
+</body>
+</html>
