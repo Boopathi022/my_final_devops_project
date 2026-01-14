@@ -13,20 +13,20 @@ Design, automate, and deploy an application using Terraform, Ansible, Jenkins, D
 
 🧠 Project Architecture (High Level)
 
-GitHub (Source Code)
-        ↓
-Jenkins (CI/CD Pipeline)
-        ↓
-Terraform (Provision EC2 + Security Group)
-        ↓
-Ansible (Install & Configure Docker)
-        ↓
-Docker (Build & Run Application)
-        ↓
-AWS EC2 (Live Production Server)
+    GitHub (Source Code)
+            ↓
+    Jenkins (CI/CD Pipeline)
+            ↓
+    Terraform (Provision EC2 + Security Group)
+            ↓
+    Ansible (Install & Configure Docker)
+            ↓
+    Docker (Build & Run Application)
+            ↓
+    AWS EC2 (Live Production Server)
 
 
----
+
 
 🧱 Tools & Responsibilities
 
@@ -34,34 +34,33 @@ Tool       	Purpose
 
 GitHub	    Source code management
 Jenkins	    CI/CD automation
-Terraform	  Infrastructure provisioning (EC2, Security Group)
-Ansible   	Configuration management (Docker installation)
-Docker    	Application containerization
+Terraform   Infrastructure provisioning (EC2, Security Group)
+Ansible     Configuration management (Docker installation)
+Docker      Application containerization
 AWS EC2	    Application hosting
 
 
 
----
 
 📁 Project Structure
 
-.
-├── terraform/
-│   └── main.tf
-├── ansible/
-│   ├── hosts
-│   ├── site.yml
-│   └── roles/
-│       └── docker/
-│           └── tasks/
-│               └── main.yml
-├── Dockerfile
-├── index.html
-├── Jenkinsfile
-└── README.md
+    .
+    ├── terraform/
+    │   └── main.tf
+    ├── ansible/
+    │   ├── hosts
+    │   ├── site.yml
+    │   └── roles/
+    │       └── docker/
+    │           └── tasks/
+    │               └── main.yml
+    ├── Dockerfile
+    ├── index.html
+    ├── Jenkinsfile
+    └── README.md
 
 
----
+
 
 🛠 Phase 1 — Infrastructure Provisioning (Terraform)
 
@@ -75,13 +74,12 @@ Output the EC2 public IP
 
 Run Terraform
 
-terraform init
-terraform apply
+    terraform init
+    terraform apply
 
 ✔ Save the EC2 Public IP — it is used in Ansible and Jenkins.
 
 
----
 
 🛠 Phase 2 — Configuration Management (Ansible)
 
@@ -95,25 +93,27 @@ Adds ubuntu user to Docker group
 
 
 Run Ansible:
-ansible-playbook -i hosts site.yml -u ubuntu
+
+     ansible-playbook -i hosts site.yml -u ubuntu
+     
 ✔ Docker is installed without manual SSH work.
 
 
----
 
 🛠 Phase 3 — Application Containerization (Docker)
 
 Dockerfile
 
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
+    FROM nginx:alpine
+    COPY . /usr/share/nginx/html
 
 Application
 
-<h1>🎉 DevOps Final Project Deployed Successfully!</h1>
+    <h1>🎉 DevOps Final Project Deployed Successfully!</h1>
+    
 ✔ Lightweight, production-ready container using Nginx Alpine.
 
----
+
 
 🛠 Phase 4 — CI/CD Automation (Jenkins)
 
@@ -123,9 +123,7 @@ Pipeline stages:
 
 1. Checkout code from GitHub
 
-
 2. Build Docker image
-
 
 3. Deploy container to EC2 via SSH
 
@@ -134,18 +132,16 @@ Pipeline stages:
 ✔ Any push to GitHub triggers automatic deployment.
 
 
----
 
 ✅ Final Verification
 
 Open in browser:
 
-http://<EC2_PUBLIC_IP>:8080
+    http://<EC2_PUBLIC_IP>:8080
 
 🎉 Application successfully deployed using a complete DevOps pipeline.
 
 
----
 
 🧠 Key Learnings & Skills Demonstrated
 
@@ -167,5 +163,5 @@ This project reflects real production-style DevOps work, not just theory.
 
 👤 Author
 
-Boopathi
-Aspiring DevOps Engineer | Cloud & Automation Enthusiast ☁️🚀
+    Mahendra Boopathi R
+    Aspiring DevOps Engineer | Cloud & Automation Enthusiast ☁️🚀
